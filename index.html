@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SyncStudy</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1>SyncStudy</h1>
+            <div class="filters">
+                <div class="filter-selector">
+                    <select id="languageFilter" class="filter-select">
+                        <option value="all">Todas Linguagens</option>
+                    </select>
+                </div>
+                <div class="filter-selector">
+                    <select id="categoryFilter" class="filter-select">
+                        <option value="all">Todas Categorias</option>
+                    </select>
+                </div>
+            </div>
+            <button id="themeToggle" class="theme-toggle">
+                <span id="themeIcon">🌙</span>
+            </button>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="stats-bar">
+            <div class="stat">
+                <span class="stat-label">Tempo médio</span>
+                <span id="avgTime" class="stat-value">0s</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Cards estudados</span>
+                <span id="studiedCards" class="stat-value">0</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Sequência</span>
+                <span id="streak" class="stat-value">0</span>
+            </div>
+        </div>
+
+        <div class="progress-bar">
+            <div id="progressFill" class="progress-fill"></div>
+        </div>
+
+        <div class="flashcard-container">
+            <div class="flashcard" id="flashcard">
+                <div class="flashcard-inner">
+                    <div class="flashcard-front">
+                        <p id="question"></p>
+                    </div>
+                    <div class="flashcard-back">
+                        <p id="answer"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="controls">
+            <button id="prevBtn" class="btn">Anterior</button>
+            <button id="shuffleBtn" class="btn">Aleatório</button>
+            <button id="nextBtn" class="btn">Próximo</button>
+        </div>
+        <div class="progress" id="progress">
+            Card 1 of 1
+        </div>
+        <div class="difficulty-rating">
+            <button class="difficulty-btn" data-difficulty="easy">Fácil</button>
+            <button class="difficulty-btn" data-difficulty="medium">Médio</button>
+            <button class="difficulty-btn" data-difficulty="hard">Difícil</button>
+        </div>
+        <div class="timer" id="timer">00:00</div>
+    </div>
+    <script type="module" src="./js/script.js"></script>
+</body>
+</html>
