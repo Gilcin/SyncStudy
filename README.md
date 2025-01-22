@@ -35,15 +35,6 @@ Os dados para estudo sao adicionados via js e "armazenados" em um array
 - `←` - Card anterior
 - `→` - Próximo card
 
-## 💾 Armazenamento Local
-- Preferências de tema
-- Histórico de dificuldade dos cards
-- Progresso de estudo
-- Sequência de acertos
-
-## 🎨 Personalização
-O app possui tema claro e escuro, com transições suaves e efeitos visuais modernos.
-
 ## 📚 Conteúdo
 - **JavaScript**: Conceitos básicos, funções, ES6+, assincronismo
 - **Go**: Fundamentos, concorrência, tipos de dados, funções
