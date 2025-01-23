@@ -1,4 +1,4 @@
-const flashJs = [    
+const jsFlashcards = [    
     {
         id: 1,
         question: "O que é JavaScript?",
@@ -78,4 +78,5 @@ const flashJs = [
     }
 ];
 
-export default flashJs;
+// Adicione ao escopo global
+window.jsFlashcards = jsFlashcards;

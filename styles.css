@@ -601,3 +601,343 @@ h1 {
 .flashcard-back p::-webkit-scrollbar-thumb:hover {
     background: #5d5d5d;
 }
+
+/* ...existing code... */
+
+.quiz-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.quiz-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.question-card {
+    background: var(--bg-secondary);
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border-color);
+}
+
+.question-text {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    line-height: 1.6;
+    text-align: center;
+}
+
+.quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.quiz-option {
+    padding: 1.2rem;
+    border: 2px solid var(--border-color);
+    border-radius: 0.8rem;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.quiz-option:before {
+    content: attr(data-option);
+    background: var(--accent-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.4rem;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.quiz-option:hover {
+    transform: translateY(-2px);
+    background: var(--bg-tertiary);
+    border-color: var(--accent-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.quiz-option.correct {
+    background: var(--success-color);
+    color: white;
+    border-color: var(--success-color);
+    animation: correct-answer 0.5s ease;
+}
+
+.quiz-option.wrong {
+    background: var(--danger-color);
+    color: white;
+    border-color: var(--danger-color);
+    animation: wrong-answer 0.5s ease;
+}
+
+.answer-feedback {
+    text-align: center;
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border-radius: 0.8rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.answer-feedback.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.answer-feedback.correct {
+    background: rgba(76, 175, 80, 0.1);
+    color: var (--success-color);
+}
+
+.answer-feedback.wrong {
+    background: rgba(244, 67, 54, 0.1);
+    color: var (--danger-color);
+}
+
+@keyframes correct-answer {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+@keyframes wrong-answer {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-5px); }
+    40%, 80% { transform: translateX(5px); }
+}
+
+@media (max-width: 600px) {
+    .quiz-option {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .quiz-option:before {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.8rem;
+    }
+
+    .question-card {
+        padding: 1.5rem;
+    }
+
+    .question-text {
+        font-size: 1.1rem;
+    }
+}
+
+/* ...rest of existing code... */
+
+.quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    width: 100%;
+    max-width: 400px;
+}
+
+.quiz-option {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+}
+
+.quiz-option:hover {
+    background: var(--bg-secondary);
+    transform: translateY(-2px);
+}
+
+.quiz-option.correct {
+    background: var(--success-color);
+    color: white;
+}
+
+.quiz-option.wrong {
+    background: var(--danger-color);
+    color: white;
+}
+
+.answer-feedback {
+    margin-top: 1rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    font-weight: bold;
+}
+
+.answer-feedback.correct {
+    color: var(--success-color);
+}
+
+.answer-feedback.wrong {
+    color: var(--danger-color);
+}
+
+/* ...rest of existing code... */
+
+.study-mode-selector {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.mode-btn {
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.mode-btn:hover {
+    background: var(--bg-tertiary);
+    transform: translateY(-2px);
+}
+
+.mode-btn.active {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    color: white;
+}
+
+.mode-icon {
+    font-size: 1.2rem;
+}
+
+/* Hide quiz section by default */
+.quiz-section {
+    display: none;
+}
+
+/* Show quiz section when in quiz mode */
+body[data-mode="quiz"] .quiz-section {
+    display: block;
+}
+
+/* Hide card flip functionality in quiz mode */
+body[data-mode="quiz"] .flashcard {
+    pointer-events: none;
+}
+
+/* Show card flip in card mode */
+body[data-mode="card"] .flashcard {
+    pointer-events: auto;
+}
+
+/* ...rest of existing code... */
+
+/* ...existing variables and base styles... */
+
+.home-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+}
+
+.home-title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.home-subtitle {
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+    font-size: 1.2rem;
+}
+
+.mode-selection {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.mode-card {
+    background: var(--bg-secondary);
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid var(--border-color);
+    text-decoration: none;
+    color: var(--text-primary);
+    width: 250px;
+    transition: all 0.3s ease;
+}
+
+.mode-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border-color: var(--accent-color);
+}
+
+.mode-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.mode-card h2 {
+    margin-bottom: 0.5rem;
+    color: var(--accent-color);
+}
+
+.mode-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+    .mode-selection {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .mode-card {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+/* ...rest of existing styles... */

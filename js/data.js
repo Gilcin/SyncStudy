@@ -1,4 +1,4 @@
-const flashcards = [
+const goFlashcards = [
     {
         id: 1,
         question: "O que é Go?",
@@ -78,4 +78,5 @@ const flashcards = [
     }
 ];
 
-export default flashcards;
+// Adicione ao escopo global
+window.goFlashcards = goFlashcards;
