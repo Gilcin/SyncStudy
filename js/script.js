@@ -18,9 +18,6 @@ const progressElement = document.getElementById('progress');
 const difficultyButtons = document.querySelectorAll('.difficulty-btn');
 const languageFilter = document.getElementById('languageFilter');
 const categoryFilter = document.getElementById('categoryFilter');
-const themeToggle = document.getElementById('themeToggle');
-const themeIcon = document.getElementById('themeIcon');
-const themeText = document.getElementById('themeText');
 
 // Adicionar novos elementos DOM
 const timerElement = document.getElementById('timer');
@@ -41,7 +38,6 @@ let cards = [...allFlashcards];
 let difficultyRatings = JSON.parse(localStorage.getItem('flashcardDifficulty')) || {};
 let currentLanguage = 'all';
 let currentCategory = 'all';
-let currentTheme = localStorage.getItem('theme') || 'dark';
 
 // Adicionar estado para estatísticas
 let startTime = Date.now();
@@ -53,6 +49,9 @@ let streak = parseInt(localStorage.getItem('streak')) || 0;
 let isAnswered = false;
 let correctAnswer = '';
 let currentMode = localStorage.getItem('studyMode') || 'card';
+
+// Add to state section
+let wrongAnswers = [];
 
 // Functions
 function updateCard() {
@@ -178,20 +177,6 @@ function setDifficulty(difficulty) {
     updateCard();
 }
 
-function setTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-    currentTheme = theme;
-    
-    if (theme === 'dark') {
-        themeIcon.textContent = '🌙';
-        themeText.textContent = 'Dark';
-    } else {
-        themeIcon.textContent = '☀️';
-        themeText.textContent = 'Light';
-    }
-}
-
 function startTimer() {
     startTime = Date.now();
     updateTimer();
@@ -279,6 +264,14 @@ function handleAnswer(e) {
     if (!isCorrect) {
         document.querySelector(`[data-answer="${correctAnswer}"]`)
             .classList.add('correct');
+        // Add wrong answer to the list
+        wrongAnswers.push({
+            question: cards[currentIndex].question,
+            userAnswer: selectedAnswer,
+            correctAnswer: correctAnswer
+        });
+        // Update wrong answers display
+        updateWrongAnswersCount();
     }
     
     // Update feedback
@@ -286,6 +279,13 @@ function handleAnswer(e) {
     answerFeedback.className = `answer-feedback ${isCorrect ? 'correct' : 'wrong'} show`;
     
     isAnswered = true;
+}
+
+function updateWrongAnswersCount() {
+    const wrongAnswersElement = document.getElementById('streak'); // reusing streak element
+    wrongAnswersElement.textContent = wrongAnswers.length;
+    const wrongAnswersLabel = wrongAnswersElement.previousElementSibling;
+    wrongAnswersLabel.textContent = 'Respostas Erradas';
 }
 
 function setStudyMode(mode) {
@@ -332,10 +332,6 @@ categoryFilter.addEventListener('change', (e) => {
     filterCards();
 });
 
-themeToggle.addEventListener('click', () => {
-    setTheme(currentTheme === 'dark' ? 'light' : 'dark');
-});
-
 cardModeBtn.addEventListener('click', () => setStudyMode('card'));
 quizModeBtn.addEventListener('click', () => setStudyMode('quiz'));
 
@@ -349,8 +345,13 @@ document.addEventListener('keydown', (e) => {
 // Initialize
 populateFilters();
 filterCards();
-setTheme(currentTheme);
 initializeStats();
 resetTimer();
 setInterval(updateTimer, 1000);
 setStudyMode(currentMode);
+
+// Update initialization
+document.addEventListener('DOMContentLoaded', () => {
+    // ...existing initialization code...
+    updateWrongAnswersCount();
+});

@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="pt-BR" data-theme="dark">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SyncStudy - Modo Quiz</title>
     <link rel="stylesheet" href="styles.css">
+    <script>
+        // Initialize theme before page loads to prevent flash
+        document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');
+    </script>
 </head>
 <body>
     <header class="header">
@@ -40,7 +44,7 @@
                 <span id="totalQuestions" class="stat-value">0</span>
             </div>
             <div class="stat">
-                <span class="stat-label">Sequência</span>
+                <span class="stat-label">Respostas Erradas</span>
                 <span id="streak" class="stat-value">0</span>
             </div>
         </div>

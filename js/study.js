@@ -2,7 +2,7 @@
 let currentIndex = 0;
 let cards = [];
 let studiedCount = parseInt(localStorage.getItem('studiedCount')) || 0;
-let streak = parseInt(localStorage.getItem('streak')) || 0;
+let correctAnswers = parseInt(localStorage.getItem('correctAnswers')) || 0;
 let currentLanguage = 'all';
 let currentCategory = 'all';
 let startTime = Date.now();
@@ -16,12 +16,11 @@ const prevButton = document.getElementById('prevBtn');
 const nextButton = document.getElementById('nextBtn');
 const shuffleButton = document.getElementById('shuffleBtn');
 const progressElement = document.getElementById('progress');
-const difficultyButtons = document.querySelectorAll('.difficulty-btn');
 const languageFilter = document.getElementById('languageFilter');
 const categoryFilter = document.getElementById('categoryFilter');
 const progressFill = document.getElementById('progressFill');
 const studiedCardsElement = document.getElementById('studiedCards');
-const streakElement = document.getElementById('streak');
+const correctAnswersElement = document.getElementById('correctAnswers');
 const avgTimeElement = document.getElementById('avgTime');
 const timerElement = document.getElementById('timer');
 
@@ -64,7 +63,7 @@ function filterCards() {
 
 function updateStats() {
     studiedCardsElement.textContent = studiedCount;
-    streakElement.textContent = streak;
+    correctAnswersElement.textContent = correctAnswers;
     
     if (cardTimes.length > 0) {
         const avgTime = Math.floor(cardTimes.reduce((a, b) => a + b, 0) / cardTimes.length);
@@ -127,15 +126,6 @@ document.addEventListener('DOMContentLoaded', () => {
     categoryFilter.addEventListener('change', (e) => {
         currentCategory = e.target.value;
         filterCards();
-    });
-
-    difficultyButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const difficulty = btn.dataset.difficulty;
-            streak = difficulty === 'easy' ? streak + 1 : 0;
-            localStorage.setItem('streak', streak);
-            nextCard();
-        });
     });
 
     // Start timer

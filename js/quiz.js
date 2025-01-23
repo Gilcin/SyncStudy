@@ -23,6 +23,7 @@ let isAnswered = false;
 let correctAnswer = '';
 let correctCount = 0;
 let streak = 0;
+let wrongCount = 0;
 
 function updateQuiz() {
     if (!cards || cards.length === 0) {
@@ -74,26 +75,30 @@ function handleAnswer(e) {
     const selectedAnswer = e.target.dataset.answer;
     const isCorrect = selectedAnswer === correctAnswer;
     
+    // Visual feedback
     e.target.classList.add(isCorrect ? 'correct' : 'wrong');
+    
     if (!isCorrect) {
         document.querySelector(`[data-answer="${correctAnswer}"]`)?.classList.add('correct');
+        wrongCount++;
+        document.getElementById('streak').textContent = wrongCount;
     } else {
         correctCount++;
-        streak++;
+        document.getElementById('correctAnswers').textContent = correctCount;
     }
     
-    // Update stats
-    correctAnswersElement.textContent = correctCount;
-    streakElement.textContent = streak;
-    
-    answerFeedback.textContent = isCorrect ? 'Correto!' : 'Incorreto!';
-    answerFeedback.className = `answer-feedback ${isCorrect ? 'correct' : 'wrong'}`;
+    // Update feedback
+    answerFeedback.textContent = isCorrect ? 'Correto! 🎉' : 'Incorreto! 😕';
+    answerFeedback.className = `answer-feedback ${isCorrect ? 'correct' : 'wrong'} show`;
     
     isAnswered = true;
 }
 
 // Event Listeners
 document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('correctAnswers').textContent = '0';
+    document.getElementById('streak').textContent = '0';
+    document.getElementById('totalQuestions').textContent = cards.length.toString();
     updateQuiz();
     
     nextButton.addEventListener('click', () => {
