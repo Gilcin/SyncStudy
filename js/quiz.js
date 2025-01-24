@@ -24,6 +24,8 @@ let correctAnswer = '';
 let correctCount = 0;
 let streak = 0;
 let wrongCount = 0;
+let currentLanguage = 'all';
+let currentCategory = 'all';
 
 function updateQuiz() {
     if (!cards || cards.length === 0) {
@@ -94,8 +96,79 @@ function handleAnswer(e) {
     isAnswered = true;
 }
 
+function updateCategoryFilter() {
+    const filteredByLanguage = currentLanguage === 'all' 
+        ? allFlashcards
+        : allFlashcards.filter(card => card.language.toLowerCase() === currentLanguage.toLowerCase());
+
+    const categories = ['all', ...new Set(filteredByLanguage.map(card => card.category))];
+    
+    categoryFilter.innerHTML = categories.map(category =>
+        `<option value="${category.toLowerCase()}">${
+            category === 'all' ? 'Todas Categorias' : category
+        }</option>`
+    ).join('');
+
+    // Reset categoria para 'all' quando mudar a linguagem
+    currentCategory = 'all';
+    categoryFilter.value = 'all';
+}
+
+function populateFilters() {
+    const languages = ['all', ...new Set(allFlashcards.map(card => card.language))];
+    languageFilter.innerHTML = languages.map(language =>
+        `<option value="${language.toLowerCase()}">${
+            language === 'all' ? 'Todas Linguagens' : language
+        }</option>`
+    ).join('');
+
+    // Inicializa o filtro de categorias
+    updateCategoryFilter();
+}
+
+function filterCards() {
+    cards = allFlashcards.filter(card => {
+        const matchesLanguage = currentLanguage === 'all' || 
+            card.language.toLowerCase() === currentLanguage.toLowerCase();
+        const matchesCategory = currentCategory === 'all' || 
+            card.category.toLowerCase() === currentCategory.toLowerCase();
+        return matchesLanguage && matchesCategory;
+    });
+
+    // Reset state
+    currentIndex = 0;
+    isAnswered = false;
+    correctCount = 0;
+    wrongCount = 0;
+    
+    // Update UI
+    correctAnswersElement.textContent = '0';
+    streakElement.textContent = '0';
+    totalQuestionsElement.textContent = cards.length.toString();
+    answerFeedback.textContent = '';
+    answerFeedback.className = 'answer-feedback';
+    
+    updateQuiz();
+}
+
 // Event Listeners
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize filters first
+    populateFilters();
+    filterCards();
+    
+    // Add filter event listeners
+    languageFilter.addEventListener('change', (e) => {
+        currentLanguage = e.target.value;
+        updateCategoryFilter();
+        filterCards();
+    });
+
+    categoryFilter.addEventListener('change', (e) => {
+        currentCategory = e.target.value;
+        filterCards();
+    });
+
     document.getElementById('correctAnswers').textContent = '0';
     document.getElementById('streak').textContent = '0';
     document.getElementById('totalQuestions').textContent = cards.length.toString();
@@ -118,6 +191,17 @@ document.addEventListener('DOMContentLoaded', () => {
     addEventListeners();
     populateFilters();
     filterCards();
+
+    languageFilter.addEventListener('change', (e) => {
+        currentLanguage = e.target.value;
+        updateCategoryFilter(); // Atualiza categorias quando mudar a linguagem
+        filterCards();
+    });
+
+    categoryFilter.addEventListener('change', (e) => {
+        currentCategory = e.target.value;
+        filterCards();
+    });
 });
 
 // ... rest of existing code ...

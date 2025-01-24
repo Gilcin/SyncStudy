@@ -24,10 +24,45 @@ const correctAnswersElement = document.getElementById('correctAnswers');
 const avgTimeElement = document.getElementById('avgTime');
 const timerElement = document.getElementById('timer');
 
+function updateCategoryFilter() {
+    // Filtra os cards pela linguagem selecionada
+    const filteredByLanguage = currentLanguage === 'all' 
+        ? [...window.goFlashcards, ...window.jsFlashcards]
+        : [...window.goFlashcards, ...window.jsFlashcards].filter(
+            card => card.language.toLowerCase() === currentLanguage.toLowerCase()
+        );
+
+    // Obtém categorias únicas dos cards filtrados
+    const categories = ['all', ...new Set(filteredByLanguage.map(card => card.category))];
+    
+    // Atualiza o select de categorias
+    categoryFilter.innerHTML = categories.map(category =>
+        `<option value="${category.toLowerCase()}">${
+            category === 'all' ? 'Todas Categorias' : category
+        }</option>`
+    ).join('');
+
+    // Reset categoria para 'all' quando mudar a linguagem
+    currentCategory = 'all';
+    categoryFilter.value = 'all';
+}
+
+function populateFilters() {
+    // Populate language filter
+    const languages = ['all', ...new Set([...window.goFlashcards, ...window.jsFlashcards].map(card => card.language))];
+    languageFilter.innerHTML = languages.map(language =>
+        `<option value="${language.toLowerCase()}">${
+            language === 'all' ? 'Todas Linguagens' : language
+        }</option>`
+    ).join('');
+
+    // Inicializa o filtro de categorias
+    updateCategoryFilter();
+}
+
 function initializeCards() {
-    // Usando as variáveis globais definidas em data.js e dataJS.js
-    cards = [...window.goFlashcards, ...window.jsFlashcards];
-    updateCard();
+    populateFilters();
+    filterCards();
     updateStats();
 }
 
@@ -48,7 +83,7 @@ function updateCard() {
 }
 
 function filterCards() {
-    const filteredCards = [...window.goFlashcards, ...window.jsFlashcards].filter(card => {
+    cards = [...window.goFlashcards, ...window.jsFlashcards].filter(card => {
         const matchesLanguage = currentLanguage === 'all' || 
             card.language.toLowerCase() === currentLanguage.toLowerCase();
         const matchesCategory = currentCategory === 'all' || 
@@ -56,7 +91,6 @@ function filterCards() {
         return matchesLanguage && matchesCategory;
     });
 
-    cards = filteredCards;
     currentIndex = 0;
     updateCard();
 }
@@ -120,6 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     languageFilter.addEventListener('change', (e) => {
         currentLanguage = e.target.value;
+        updateCategoryFilter(); // Atualiza categorias quando mudar a linguagem
         filterCards();
     });
 

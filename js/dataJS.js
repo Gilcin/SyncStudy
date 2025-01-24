@@ -75,6 +75,41 @@ const jsFlashcards = [
         answer: "É uma forma de extrair valores de arrays ou objetos em variáveis individuais.",
         category: "ES6+",
         language: "JavaScript"
+    },
+    {
+        id: 12,
+        question: "O que é o Event Loop em JavaScript?",
+        answer: "É o mecanismo que processa eventos assíncronos, gerenciando a execução de callbacks na fila de eventos.",
+        category: "Conceitos Avançados",
+        language: "JavaScript"
+    },
+    {
+        id: 13,
+        question: "O que são Web Workers?",
+        answer: "São scripts que executam em segundo plano, permitindo processamento paralelo sem interferir na interface do usuário.",
+        category: "APIs Web",
+        language: "JavaScript"
+    },
+    {
+        id: 14,
+        question: "O que é o prototype em JavaScript?",
+        answer: "É o mecanismo pelo qual objetos JavaScript herdam características uns dos outros.",
+        category: "OOP",
+        language: "JavaScript"
+    },
+    {
+        id: 15,
+        question: "O que é currying em JavaScript?",
+        answer: "É a técnica de transformar uma função com múltiplos argumentos em uma sequência de funções com um único argumento.",
+        category: "Funções",
+        language: "JavaScript"
+    },
+    {
+        id: 16,
+        question: "O que é o WeakMap?",
+        answer: "É uma coleção de pares chave/valor onde as chaves são objetos e são fracamente referenciadas.",
+        category: "Estruturas de Dados",
+        language: "JavaScript"
     }
 ];
 
