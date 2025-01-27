@@ -1,8 +1,8 @@
 const jsFlashcards = [    
     {
         id: 1,
-        question: "De forma simples, o que é JavaScript e para que serve?",
-        answer: "JavaScript é uma linguagem de programação que dá vida às páginas web! Com ela, podemos criar desde interações simples (como animar botões) até aplicações web completas. É a linguagem mais popular da web e roda em todos os navegadores modernos. Algumas coisas legais que podemos fazer: \n\n- Modificar o conteúdo da página dinamicamente\n- Responder a ações do usuário\n- Fazer requisições a servidores\n- Criar jogos e animações",
+        question: "O que é JavaScript de forma simples?",
+        answer: "JavaScript é a linguagem que faz as páginas web ganharem vida! Com ela você pode:\n\n1. Fazer páginas interativas\n2. Criar animações\n3. Comunicar com servidores\n4. Construir aplicativos web\n\nÉ a linguagem mais popular da web!",
         category: "Conceitos Básicos",
         language: "JavaScript"
     },
@@ -22,8 +22,8 @@ const jsFlashcards = [
     },
     {
         id: 4,
-        question: "Me explica o que são Promises de um jeito fácil de entender?",
-        answer: "Imagine que você está em um restaurante fast-food! Quando você faz um pedido, recebe uma comanda (isso é a Promise). A Promise pode ter três estados:\n\n1. Pending (Pendente): Seu lanche está sendo preparado\n2. Fulfilled (Resolvida): Seu lanche ficou pronto\n3. Rejected (Rejeitada): Ops, acabaram os ingredientes!\n\nÉ uma forma de lidar com operações que demoram, como carregar dados do servidor ou ler arquivos, sem travar seu programa.",
+        question: "O que é uma Promise de forma simples?",
+        answer: "Promise é como um pedido no restaurante:\n\n1. Fazendo (pending): Seu pedido está sendo preparado\n2. Pronto (resolved): Pedido chegou!\n3. Problema (rejected): Acabou o ingrediente\n\nÚtil para operações que demoram, como carregar dados da internet.",
         category: "Assíncrono",
         language: "JavaScript"
     },
@@ -78,8 +78,8 @@ const jsFlashcards = [
     },
     {
         id: 12,
-        question: "Como funciona o Event Loop? Me explica como se eu fosse iniciante!",
-        answer: "Imagine o Event Loop como um gerente muito organizado de uma empresa! Ele tem:\n\n1. Uma pilha de tarefas principais (Call Stack)\n2. Uma fila de espera para tarefas extras (Callback Queue)\n\nQuando você roda um código JavaScript:\n- Tarefas síncronas vão direto para execução\n- Tarefas assíncronas (setTimeout, promessas, etc.) vão para a fila de espera\n- O Event Loop fica checando: 'A pilha principal está vazia? Então vou pegar a próxima tarefa da fila!'\n\nIsso permite que o JavaScript execute uma coisa de cada vez sem travar a página.",
+        question: "Me explica o Event Loop de forma simples?",
+        answer: "Event Loop é como um organizador de tarefas:\n\n1. Tarefas normais: executa na hora\n2. Tarefas que demoram: coloca na fila de espera\n3. Quando terminar as normais: pega da fila\n\nAssim o JavaScript consegue fazer várias coisas sem travar!",
         category: "Conceitos Avançados",
         language: "JavaScript"
     },

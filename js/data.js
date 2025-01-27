@@ -1,8 +1,8 @@
 const goFlashcards = [
     {
         id: 1,
-        question: "Me fala sobre Go! Por que tantas pessoas estão usando essa linguagem?",
-        answer: "Go (ou Golang) é uma linguagem criada pelo Google que resolve problemas reais de desenvolvimento! Suas principais características são:\n\n1. Super rápida e eficiente\n2. Sintaxe simples e fácil de aprender\n3. Excelente para sistemas distribuídos e cloud\n4. Compilada (gera um único arquivo executável)\n5. Tem coleta de lixo automática\n\nÉ muito usada por empresas como Google, Netflix, Uber e Docker por ser ótima para construir serviços escaláveis!",
+        question: "Me explica Go de um jeito simples?",
+        answer: "Go é uma linguagem moderna criada pelo Google que é:\n\n1. Rápida como C++\n2. Fácil como Python\n3. Ótima para serviços web\n4. Tem suporte nativo para programação paralela\n\nÉ muito usada para criar servidores, APIs e ferramentas de linha de comando.",
         category: "Go Basics",
         language: "Go"
     },
@@ -158,6 +158,20 @@ const goFlashcards = [
         question: "O que é rate limiting em Go?",
         answer: "É uma técnica para controlar a frequência de requisições ou operações usando canais e timers.",
         category: "Concorrência",
+        language: "Go"
+    },
+    {
+        id: 24,
+        question: "O que são Marshal e Unmarshal em Go? Me explica de forma simples!",
+        answer: "São funções para converter dados entre Go e JSON:\n\nMarshal:\n- Transforma dados Go → JSON\n- Exemplo: struct vira texto JSON\n\nUnmarshal:\n- Transforma JSON → dados Go\n- Exemplo: texto JSON vira struct\n\nÉ como traduzir entre duas línguas diferentes!",
+        category: "Serialização",
+        language: "Go"
+    },
+    {
+        id: 25,
+        question: "Como usar Marshal e Unmarshal da melhor forma?",
+        answer: "Dicas práticas:\n\n1. Use tags para nomear campos:\n`json:\"nome\"` ou `json:\"-\"` para ignorar\n\n2. Sempre verifique erros\n\n3. Para arquivos grandes:\nUse Encoder/Decoder ao invés de Marshal/Unmarshal\n\nExemplo:\n```go\ntype User struct {\n    Nome string `json:\"nome\"`\n    Idade int   `json:\"idade,omitempty\"`\n}\n```",
+        category: "Serialização",
         language: "Go"
     }
 ];
