@@ -1,8 +1,8 @@
 const jsFlashcards = [    
     {
         id: 1,
-        question: "O que é JavaScript?",
-        answer: "JavaScript é uma linguagem de programação utilizada para criar interatividade e dinamismo em páginas web.",
+        question: "De forma simples, o que é JavaScript e para que serve?",
+        answer: "JavaScript é uma linguagem de programação que dá vida às páginas web! Com ela, podemos criar desde interações simples (como animar botões) até aplicações web completas. É a linguagem mais popular da web e roda em todos os navegadores modernos. Algumas coisas legais que podemos fazer: \n\n- Modificar o conteúdo da página dinamicamente\n- Responder a ações do usuário\n- Fazer requisições a servidores\n- Criar jogos e animações",
         category: "Conceitos Básicos",
         language: "JavaScript"
     },
@@ -22,8 +22,8 @@ const jsFlashcards = [
     },
     {
         id: 4,
-        question: "O que são Promises?",
-        answer: "Promises representam operações assíncronas que podem ser resolvidas ou rejeitadas.",
+        question: "Me explica o que são Promises de um jeito fácil de entender?",
+        answer: "Imagine que você está em um restaurante fast-food! Quando você faz um pedido, recebe uma comanda (isso é a Promise). A Promise pode ter três estados:\n\n1. Pending (Pendente): Seu lanche está sendo preparado\n2. Fulfilled (Resolvida): Seu lanche ficou pronto\n3. Rejected (Rejeitada): Ops, acabaram os ingredientes!\n\nÉ uma forma de lidar com operações que demoram, como carregar dados do servidor ou ler arquivos, sem travar seu programa.",
         category: "Assíncrono",
         language: "JavaScript"
     },
@@ -78,8 +78,8 @@ const jsFlashcards = [
     },
     {
         id: 12,
-        question: "O que é o Event Loop em JavaScript?",
-        answer: "É o mecanismo que processa eventos assíncronos, gerenciando a execução de callbacks na fila de eventos.",
+        question: "Como funciona o Event Loop? Me explica como se eu fosse iniciante!",
+        answer: "Imagine o Event Loop como um gerente muito organizado de uma empresa! Ele tem:\n\n1. Uma pilha de tarefas principais (Call Stack)\n2. Uma fila de espera para tarefas extras (Callback Queue)\n\nQuando você roda um código JavaScript:\n- Tarefas síncronas vão direto para execução\n- Tarefas assíncronas (setTimeout, promessas, etc.) vão para a fila de espera\n- O Event Loop fica checando: 'A pilha principal está vazia? Então vou pegar a próxima tarefa da fila!'\n\nIsso permite que o JavaScript execute uma coisa de cada vez sem travar a página.",
         category: "Conceitos Avançados",
         language: "JavaScript"
     },

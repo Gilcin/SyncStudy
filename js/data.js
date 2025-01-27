@@ -1,8 +1,8 @@
 const goFlashcards = [
     {
         id: 1,
-        question: "O que é Go?",
-        answer: "Go é uma linguagem de programação criada pelo Google que foca em ser simples, eficiente e fácil de usar.",
+        question: "Me fala sobre Go! Por que tantas pessoas estão usando essa linguagem?",
+        answer: "Go (ou Golang) é uma linguagem criada pelo Google que resolve problemas reais de desenvolvimento! Suas principais características são:\n\n1. Super rápida e eficiente\n2. Sintaxe simples e fácil de aprender\n3. Excelente para sistemas distribuídos e cloud\n4. Compilada (gera um único arquivo executável)\n5. Tem coleta de lixo automática\n\nÉ muito usada por empresas como Google, Netflix, Uber e Docker por ser ótima para construir serviços escaláveis!",
         category: "Go Basics",
         language: "Go"
     },
@@ -22,8 +22,8 @@ const goFlashcards = [
     },
     {
         id: 4,
-        question: "Como funcionam goroutines em Go?",
-        answer: "Goroutines são funções que podem ser executadas de forma concorrente, utilizando a palavra-chave 'go'.",
+        question: "O que são Goroutines? Como elas tornam Go especial?",
+        answer: "Goroutines são como \"mini-programas\" que rodam simultaneamente! Imagine que você está fazendo várias tarefas:\n\n- Baixando um arquivo\n- Processando dados\n- Respondendo a requisições\n\nEm vez de fazer uma coisa de cada vez, Go permite fazer tudo ao mesmo tempo usando goroutines. O melhor:\n1. São super leves (você pode criar milhares delas)\n2. Começam com apenas 2KB de memória\n3. São mais simples que threads tradicionais\n4. Go gerencia tudo automaticamente\n\nPara usar, basta adicionar 'go' antes da função: 'go minhaFuncao()'",
         category: "Concorrência",
         language: "Go"
     },
@@ -99,8 +99,8 @@ const goFlashcards = [
     },
     {
         id: 15,
-        question: "Como funciona o select em Go?",
-        answer: "Select é uma estrutura de controle que permite esperar por múltiplas operações de comunicação em canais, escolhendo a primeira que estiver pronta.",
+        question: "Como o select funciona na prática em Go?",
+        answer: "O select é como um garçom super eficiente em um restaurante! Ele:\n\n1. Fica observando vários canais ao mesmo tempo\n2. Quando uma mensagem chega em qualquer canal, ele age imediatamente\n3. Se várias mensagens chegam juntas, ele escolhe uma aleatoriamente\n\nExemplo prático:\n- Você pode esperar por timeouts\n- Receber dados de múltiplas fontes\n- Implementar padrões de cancelamento\n\nÉ muito útil quando trabalhamos com sistemas concorrentes e precisamos lidar com múltiplos eventos simultaneamente.",
         category: "Concorrência",
         language: "Go"
     },
